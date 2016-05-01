@@ -2,7 +2,8 @@ machine:
     environment:
         LISP: sbcl-bin
         PATH: ~/.roswell/bin:$PATH
-        CXX: clang++
+        CC: clang-3.7
+        CXX: clang++-3.7
 
 checkout:
     pre:
