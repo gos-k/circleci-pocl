@@ -12,7 +12,6 @@ dependencies:
         - sudo bash -c 'echo "deb http://mirrors.kernel.org/ubuntu wily main universe" >> /etc/apt/sources.list'
         - sudo apt-get update
         - sudo apt-get install -y pkg-config libhwloc-dev llvm-3.7-dev clang-3.7 libclang-3.7-dev ocl-icd-opencl-dev libedit-dev libstdc++-4.9-dev libstdc++6 libstdc++6-4.7-dev
-        - sudo apt-get purge llvm llvm-3.6
         - wget http://portablecl.org/downloads/pocl-0.13.tar.gz && tar xzf pocl-0.13.tar.gz
         - cd pocl-0.13/ && ./configure && make && sudo make install
 
