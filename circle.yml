@@ -9,10 +9,11 @@ checkout:
         - curl -L https://raw.githubusercontent.com/snmsts/roswell/master/scripts/install-for-ci.sh | sh
 
 dependencies:
-    pre:
+    cache_directories:
+        - ~/pocl-0.12/
+
+    override:
         - sudo apt-get install -y pkg-config libltdl3-dev libhwloc-dev llvm-dev clang libclang-dev ocl-icd-opencl-dev libedit-dev
         - if [ ! -d ~/pocl-0.12/ ]; then wget http://portablecl.org/downloads/pocl-0.12.tar.gz; fi
         - if [ ! -d ~/pocl-0.12/ ]; then tar xzf pocl-0.12.tar.gz && cd pocl-0.12/ && ./configure && make && sudo make install; fi
 
-    cache_directories:
-        - ~/pocl-0.12/
