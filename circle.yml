@@ -10,6 +10,7 @@ dependencies:
         - "~/pocl-0.12/"
 
     pre:
+        - env
         - pwd
         - echo ${HOME}
         - if [ ! -e ~/.roswell/ ]; then curl -L https://raw.githubusercontent.com/snmsts/roswell/master/scripts/install-for-ci.sh | sh; fi
