@@ -2,6 +2,10 @@ machine:
     services:
         - docker
 
+dependencies:
+    override:
+        - docker build -t circleci-pocl .
+
 test:
     override:
-        - docker build .
+        - docker run -i -t circleci-pocl
