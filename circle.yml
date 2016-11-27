@@ -8,11 +8,14 @@ dependencies:
     override:
         - ls -la ~/.docker/*
         - docker images
+        - if [ -e ~/.docker/ubuntu-image.tar ]; then docker load < ~/.docker/ubuntu-image.tar; fi
         - if [ -e ~/.docker/image.tar ]; then docker load < ~/.docker/image.tar; fi
         - docker images
         - docker build -t $CIRCLE_PROJECT_REPONAME .
         - docker images
-        - mkdir -p ~/.docker; docker save $CIRCLE_PROJECT_REPONAME > ~/.docker/image.tar
+        - mkdir -p ~/.docker
+        - docker save ubuntu > ~/.docker/ubuntu-image.tar
+        - docker save $CIRCLE_PROJECT_REPONAME > ~/.docker/image.tar
         - ls -la ~/.docker/*
 
 test:
