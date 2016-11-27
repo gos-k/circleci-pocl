@@ -3,8 +3,12 @@ machine:
         - docker
 
 dependencies:
+    cache_directories:
+        - ~/.docker
     override:
-        - docker build -t circleci-pocl .
+        - if [[ -e ~/.docker/image.tar ]]; then docker load -i ~/.docker/image.tar; fi
+        - docker build -t $CIRCLE_PROJECT_REPONAME .
+        - mkdir -p ~/.docker; docker save $CIRCLE_PROJECT_REPONAME > ~/.docker/image.tar
 
 test:
     override:
