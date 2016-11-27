@@ -6,8 +6,10 @@ dependencies:
     cache_directories:
         - ~/.docker
     override:
+        - ls -la ~/.docker/image.tar
         - docker images
         - if [[ -e ~/.docker/image.tar ]]; then docker load -i ~/.docker/image.tar; fi
+        - docker images
         - docker build -t circleci-pocl .
         - docker images
         - mkdir -p ~/.docker; docker save circleci-pocl > ~/.docker/image.tar
