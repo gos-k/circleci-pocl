@@ -8,11 +8,11 @@ dependencies:
     override:
         - ls -la ~/.docker/*
         - docker images
-        - if [ -e ~/.docker/circleci-pocl-image.tar ]; then docker load < ~/.docker/circleci-pocl-image.tar; fi
+        - if [ -e ~/.docker/image.tar ]; then docker load < ~/.docker/image.tar; fi
         - docker images
-        - docker build -t circleci-pocl .
+        - docker build -t $CIRCLE_PROJECT_REPONAME .
         - docker images
-        - mkdir -p ~/.docker; docker save circleci-pocl > ~/.docker/circleci-pocl-image.tar
+        - mkdir -p ~/.docker; docker save $CIRCLE_PROJECT_REPONAME > ~/.docker/image.tar
         - ls -la ~/.docker/*
 
 test:
