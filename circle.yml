@@ -8,13 +8,10 @@ dependencies:
     override:
         - ls -la ~/.docker/*
         - docker images
-        - if [ -e ~/.docker/ubuntu-image.tar ]; then docker load < ~/.docker/ubuntu-image.tar; fi
-        - docker images
         - if [ -e ~/.docker/circleci-pocl-image.tar ]; then docker load < ~/.docker/circleci-pocl-image.tar; fi
         - docker images
         - docker build -t circleci-pocl .
         - docker images
-        - mkdir -p ~/.docker; docker save ubuntu > ~/.docker/ubuntu-image.tar
         - mkdir -p ~/.docker; docker save circleci-pocl > ~/.docker/circleci-pocl-image.tar
         - ls -la ~/.docker/*
 
